@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Clinic Input</title>
+</head>
+<body>
+<form action="/input" method="post">
+    <h2>Owner Info</h2>
+    Name: <input name="ownerName" required><br>
+    Address: <input name="ownerAddress" required><br>
+    Phone: <input name="ownerPhone" required><br>
+    <h2>Pet Info</h2>
+    Name: <input name="petName" required><br>
+    Type: <input name="petType" required><br>
+    Age: <input name="petAge" type="number" required><br>
+    <h2>Appointment</h2>
+    Date (YYYY-MM-DD): <input name="appointmentDate" required><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
