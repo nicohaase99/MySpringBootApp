@@ -11,13 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out source code...'
-                git branch: 'main', url: 'https://github.com/nicohaase99/MySpringBootApp.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo 'Building the application...'
@@ -61,9 +54,11 @@ pipeline {
                         echo "Starting application in background..."
                         nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1 &
                         echo "Waiting for application to start..."
-                        sleep 20
+                        sleep 25
                         echo "Application logs:"
                         cat application.log
+                        echo "Checking if application is running:"
+                        ps aux | grep MySpringBootApp || echo "No processes found"
                         echo "Testing application endpoint..."
                         curl -f http://localhost:9090/pet/owner
                         echo "Application deployed successfully!"
