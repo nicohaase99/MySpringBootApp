@@ -54,22 +54,21 @@
 
            stage('Deploy to Staging') {
                steps {
-                   echo 'Deploying to staging environment...'
-                   sh '''
-                       echo "Killing any existing application..."
-                       pkill -f "MySpringBootApp-0.0.1-SNAPSHOT.jar" || true
-
-                       echo "Starting application in background..."
-                       nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
-
-                       echo "Waiting for application to start..."
-                       sleep 15
-
-                       echo "Testing application endpoint..."
-                       curl -f http://localhost:9090/pet/owner || exit 1
-
-                       echo "Application deployed successfully!"
-                   '''
+                     script {
+                            echo 'Deploying to staging environment...'
+                            sh '''
+                                echo "Killing any existing application..."
+                                pkill -f MySpringBootApp-0.0.1-SNAPSHOT.jar || true
+                                echo "Starting application in background..."
+                                nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1 &
+                                echo "Waiting for application to start..."
+                                sleep 20
+                                echo "Application logs:"
+                                cat application.log
+                                echo "Testing application endpoint..."
+                                curl -f http://localhost:9090/pet/owner
+                                echo "Application deployed successfully!"
+                            '''
                }
            }
        }
