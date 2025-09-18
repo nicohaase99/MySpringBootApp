@@ -58,6 +58,8 @@ pipeline {
                     sh 'echo "Checking if application is running:"'
                     sh 'ps aux | grep MySpringBootApp || echo "No processes found"'
                     sh 'echo "Testing application endpoint:"'
+                    sh 'curl -f http://localhost:9090/'
+                    sh 'curl -f http://localhost:9090/api'
                     sh 'curl -f http://localhost:9090/pet/owner'
                     echo 'Application deployed successfully!'
                 }

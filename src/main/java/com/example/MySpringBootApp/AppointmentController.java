@@ -4,24 +4,27 @@ import com.example.MySpringBootApp.model.Appointment;
 import com.example.MySpringBootApp.model.Owner;
 import com.example.MySpringBootApp.model.Pet;
 
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@RestController
 public class AppointmentController {
 
+    @GetMapping("/")
+    public String root() {
+        return "Welcome to the Pet Clinic Spring Boot Application!";
+    }
+
+    @GetMapping("/api")
+    public String apiRoot() {
+        return "Pet Clinic API is running.";
+    }
+
     @GetMapping("/pet/owner")
-    @ResponseBody
     public String getLatestAppointmentDetails() {
         return "Jenkins Pipeline Successfully Deployed Spring Boot Application!";
     }
 
     @PostMapping("/input")
-    @ResponseBody
     public String handleInput(
             @RequestParam String ownerName,
             @RequestParam String ownerAddress,
@@ -39,6 +42,4 @@ public class AppointmentController {
                 ", pet: " + pet.getName() +
                 ", appointment date: " + appointment.getDate();
     }
-
-
 }
