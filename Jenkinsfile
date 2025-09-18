@@ -52,7 +52,7 @@ pipeline {
                         echo "Killing any existing application..."
                         pkill -f MySpringBootApp-0.0.1-SNAPSHOT.jar || true
                         echo "Starting application in background..."
-                        nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1
+                        nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1 &
                         echo "Waiting for application to start..."
                         sleep 25
                         echo "Application logs:"
