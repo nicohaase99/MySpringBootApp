@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Clinic Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: #fff;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 24px 32px 32px 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h2 {
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 7px 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1565c0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="/input" method="post">
+        <h2>Owner Info</h2>
+        <label for="ownerName">Name</label>
+        <input id="ownerName" name="ownerName" required>
+        <label for="ownerAddress">Address</label>
+        <input id="ownerAddress" name="ownerAddress" required>
+        <label for="ownerPhone">Phone</label>
+        <input id="ownerPhone" name="ownerPhone" required>
+
+        <h2>Pet Info</h2>
+        <label for="petName">Name</label>
+        <input id="petName" name="petName" required>
+        <label for="petType">Type</label>
+        <input id="petType" name="petType" required>
+        <label for="petAge">Age</label>
+        <input id="petAge" name="petAge" type="number" min="0" required>
+
+        <h2>Appointment</h2>
+        <label for="appointmentDate">Date</label>
+        <input id="appointmentDate" name="appointmentDate" type="date" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
