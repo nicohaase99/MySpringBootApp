@@ -47,22 +47,19 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    echo 'Deploying to staging environment...'
-                    sh '''
-                        echo "Killing any existing application..."
-                        pkill -f MySpringBootApp-0.0.1-SNAPSHOT.jar || true
-                        echo "Starting application in background..."
-                        nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1 &
-                        echo "Waiting for application to start..."
-                        sleep 25
-                        echo "Application logs:"
-                        cat application.log
-                        echo "Checking if application is running:"
-                        ps aux | grep MySpringBootApp || echo "No processes found"
-                        echo "Testing application endpoint..."
-                        curl -f http://localhost:9090/pet/owner
-                        echo "Application deployed successfully!"
-                    '''
+                    sh 'echo "Killing any existing application..."'
+                    sh 'pkill -f MySpringBootApp-0.0.1-SNAPSHOT.jar || true'
+                    sh 'echo "Starting application in background..."'
+                    sh 'nohup java -jar target/MySpringBootApp-0.0.1-SNAPSHOT.jar > application.log 2>&1 &'
+                    sh 'echo "Waiting for application to start..."'
+                    sh 'sleep 25'
+                    sh 'echo "Application logs:"'
+                    sh 'cat application.log'
+                    sh 'echo "Checking if application is running:"'
+                    sh 'ps aux | grep MySpringBootApp || echo "No processes found"'
+                    sh 'echo "Testing application endpoint:"'
+                    sh 'curl -f http://localhost:9090/pet/owner'
+                    echo 'Application deployed successfully!'
                 }
             }
         }
