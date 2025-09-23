@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 public class AppointmentController {
 
     @GetMapping("/")
-    public String showForm() {
-        // Serves static/index.html
-        return "forward:/index.html";
+    public String showForm(Model model) {
+        model.addAttribute("message", "Welcome to the Pet Clinic Spring Boot Application!");
+        return "index";
     }
 
     @PostMapping("/input")
