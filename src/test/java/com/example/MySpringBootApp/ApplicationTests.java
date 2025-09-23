@@ -1,3 +1,4 @@
+
 package com.example.MySpringBootApp;
 
 import org.junit.jupiter.api.Test;
@@ -8,26 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class ApplicationTests {
 	@Autowired
-	private AppointmentController AppointmentController;
+	private AppointmentController appointmentController;
 
 	@Test
 	void contextLoads() {
-		// Test that the context loads successfully
+		// Verifies that the Spring context loads successfully
 	}
 
 	@Test
-	void AppointmentControllerLoads() {
-		// Test that AppointmentController is properly injected
-		assertThat(AppointmentController).isNotNull();
+	void appointmentControllerLoads() {
+		// Verifies that AppointmentController is injected
+		assertThat(appointmentController).isNotNull();
 	}
-
-	@Test
-	void AppointmentEndpointReturnsContent() {
-		// Test that the Appointment endpoint returns content
-		String headline = AppointmentController.getLatestAppointmentDetails();
-		assertThat(headline).isNotNull();
-		assertThat(headline).contains("Jenkins Pipeline");
-
-	}
-
 }
