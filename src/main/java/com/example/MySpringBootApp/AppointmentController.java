@@ -38,4 +38,10 @@ public class AppointmentController {
         model.addAttribute("message", message);
         return "result";
     }
+
+    @GetMapping("/health")
+    @ResponseBody
+    public String health() {
+        return "OK";
+    }
 }
