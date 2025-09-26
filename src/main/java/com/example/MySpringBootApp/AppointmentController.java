@@ -8,15 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/")
 public class AppointmentController {
 
-    @GetMapping("/")
+    @GetMapping
     public String showForm(Model model) {
         model.addAttribute("message", "Welcome to the Pet Clinic Spring Boot Application!");
         return "index";
     }
 
-    @PostMapping("/input")
+    @PostMapping("input")
     public String handleInput(
             @RequestParam String ownerName,
             @RequestParam String ownerAddress,
@@ -39,7 +40,7 @@ public class AppointmentController {
         return "result";
     }
 
-    @GetMapping("/health")
+    @GetMapping("health")
     @ResponseBody
     public String health() {
         return "OK";
